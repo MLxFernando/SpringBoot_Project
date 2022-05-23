@@ -25,8 +25,12 @@ public class Producto {
     private String nombre; 
     @Column(name = "PRECIO")
     private Double precio;
+    @Column(name = "MARCA")
+    private String marca;
     @Column(name = "CANTIDAD")
     private String cantidad;
+    @Column(name = "TIPO")
+    private String tipo;
 
     @ManyToOne
     @JoinColumn(name="PROVEEDOR_ID", nullable=false)

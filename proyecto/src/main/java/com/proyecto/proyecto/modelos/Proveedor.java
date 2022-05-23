@@ -20,10 +20,12 @@ public class Proveedor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "ESTADO",nullable = false, length = 10)
-    private String estado; 
-    @Column(name = "NOMBRE")
-    private String nombre;
+    @Column(name = "NOMBRE",nullable = false, length = 10)
+    private String nombre; 
+    @Column(name = "TELEFONO")
+    private String telefono;
+    @Column(name = "DIRECCION")
+    private String direccion;
     @Column(name = "TIPO")
     private String tipo;
 

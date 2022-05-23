@@ -26,6 +26,12 @@ public class Cliente {
     private String cedula; 
     @Column(name = "NOMBRE")
     private String nombre;
+    @Column(name = "TELEFONO")
+    private String telefono;
+    @Column(name = "DIRECCION")
+    private String direccion;
+    @Column(name = "EMAIL")
+    private String email;
 
     @OneToMany(mappedBy = "cliente")
     private List<Vendedor> vendedores;
