@@ -20,13 +20,13 @@ public class Vendedor {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(name = "CEDULA",nullable = false, length = 10)
-    private String cedula; 
+    private Integer cedula; 
     @Column(name = "NOMBRE")
     private String nombre;
     @Column(name = "EMAIL")
     private String email;
     @Column(name = "TELEFONO")    
-    private String telefono;
+    private Integer telefono;
 
     @ManyToOne
     @JoinColumn(name="CLIENTE_ID", nullable=false)

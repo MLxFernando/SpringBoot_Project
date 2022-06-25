@@ -21,14 +21,14 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "NOMBRE",nullable = false, length = 10)
+    @Column(name = "NOMBRE",nullable = false, length = 100)
     private String nombre; 
     @Column(name = "PRECIO")
     private Double precio;
     @Column(name = "MARCA")
     private String marca;
     @Column(name = "CANTIDAD")
-    private String cantidad;
+    private Integer cantidad;
     @Column(name = "TIPO")
     private String tipo;
 

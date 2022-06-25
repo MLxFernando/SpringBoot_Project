@@ -12,7 +12,9 @@ import lombok.Setter;
 public class NewProveedorDTO {
     @NotNull(message = "El nombre no puede ser nulo")
     private String nombre;
-    private String telefono;
+    @NotNull(message = "El telefono no puede ser nulo")
+    private Integer telefono;
+    @NotNull(message = "La direccion no puede ser nula")
     private String direccion;
     private String tipo;     
 }

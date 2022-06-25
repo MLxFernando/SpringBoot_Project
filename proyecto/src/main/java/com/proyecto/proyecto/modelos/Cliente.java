@@ -23,14 +23,14 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(name = "CEDULA",nullable = false, length = 10)
-    private String cedula; 
+    private Integer cedula; 
     @Column(name = "NOMBRE")
     private String nombre;
-    @Column(name = "TELEFONO")
-    private String telefono;
-    @Column(name = "DIRECCION")
+    @Column(name = "TELEFONO",nullable = false, length = 10)
+    private Integer telefono;
+    @Column(name = "DIRECCION", nullable = false, length = 100)
     private String direccion;
-    @Column(name = "EMAIL")
+    @Column(name = "EMAIL",nullable = false, length = 100)
     private String email;
 
     @OneToMany(mappedBy = "cliente")

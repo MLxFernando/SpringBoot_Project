@@ -21,9 +21,9 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "NOMBRE",nullable = false, length = 10)
+    @Column(name = "NOMBRE",nullable = false, length = 100)
     private String nombre; 
-    @Column(name = "DESCRIPCION")
+    @Column(name = "DESCRIPCION",nullable = false, length = 100)
     private String descripcion;
     @Column(name = "TIPO")
     private String tipo;
