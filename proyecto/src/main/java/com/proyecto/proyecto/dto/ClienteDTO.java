@@ -1,12 +1,14 @@
 package com.proyecto.proyecto.dto;
 
-public class ClienteDTO {
-    
-    private Long id;
-    private String cedula; 
-    private String nombre;
-    private String telefono;
-    private String direccion;
-    private String email;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class ClienteDTO extends NewClienteDTO {
+    private Long id;
 }

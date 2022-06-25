@@ -1,11 +1,14 @@
 package com.proyecto.proyecto.dto;
 
-public class ProductoDTO {
-    
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class ProductoDTO extends NewProductoDTO {
     private Long id;
-    private String nombre; 
-    private Double precio;
-    private String marca;
-    private String cantidad;
-    private String tipo;
 }

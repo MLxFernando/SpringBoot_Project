@@ -1,11 +1,14 @@
 package com.proyecto.proyecto.dto;
 
-public class ProveedorDTO {
-    
-    private Long id;
-    private String nombre; 
-    private String telefono;
-    private String direccion;
-    private String tipo;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class ProveedorDTO extends NewProveedorDTO {
+    private Long id;
 }
