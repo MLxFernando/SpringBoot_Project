@@ -19,16 +19,16 @@ import lombok.Setter;
 
 public class Producto {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "NOMBRE",nullable = false, length = 100)
     private String nombre; 
     @Column(name = "PRECIO")
-    private Double precio;
+    private double precio;
     @Column(name = "MARCA")
     private String marca;
     @Column(name = "CANTIDAD")
-    private Integer cantidad;
+    private int cantidad;
     @Column(name = "TIPO")
     private String tipo;
 

@@ -18,12 +18,12 @@ import lombok.Setter;
 
 public class Proveedor {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "NOMBRE",nullable = false, length = 100)
     private String nombre; 
     @Column(name = "TELEFONO")
-    private Integer telefono;
+    private int telefono;
     @Column(name = "DIRECCION")
     private String direccion;
     @Column(name = "TIPO")

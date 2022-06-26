@@ -20,14 +20,14 @@ import lombok.Setter;
 
 public class Cliente {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "CEDULA",nullable = false, length = 10)
-    private Integer cedula; 
+    private int cedula; 
     @Column(name = "NOMBRE")
     private String nombre;
     @Column(name = "TELEFONO",nullable = false, length = 10)
-    private Integer telefono;
+    private int telefono;
     @Column(name = "DIRECCION", nullable = false, length = 100)
     private String direccion;
     @Column(name = "EMAIL",nullable = false, length = 100)

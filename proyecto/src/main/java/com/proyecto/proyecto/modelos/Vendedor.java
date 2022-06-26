@@ -17,16 +17,16 @@ import lombok.Setter;
 @Setter
 public class Vendedor {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "CEDULA",nullable = false, length = 10)
-    private Integer cedula; 
+    private int cedula; 
     @Column(name = "NOMBRE")
     private String nombre;
     @Column(name = "EMAIL")
     private String email;
     @Column(name = "TELEFONO")    
-    private Integer telefono;
+    private int telefono;
 
     @ManyToOne
     @JoinColumn(name="CLIENTE_ID", nullable=false)

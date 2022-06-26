@@ -16,6 +16,6 @@ public class NewProductoDTO {
     private double precio; 
     @NotNull(message = "La marca no puede ser nula")
     private String marca;
-    private Integer cantidad;
+    private int cantidad;
     private String tipo;     
 }

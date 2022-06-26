@@ -13,6 +13,6 @@ public class NewCategoriaDTO {
     @NotNull(message = "El nombre no puede ser nulo")
     private String nombre;
     @NotNull(message = "La descripcion no puede ser nula")
-    private String description;    
+    private String descripcion;    
     private String tipo;      
 }
