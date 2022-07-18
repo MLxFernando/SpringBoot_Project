@@ -4,9 +4,9 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,46 +17,55 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.proyecto.dto.NewProveedorDTO;
+import com.proyecto.proyecto.dto.ProveedorCategoriaDTO;
 import com.proyecto.proyecto.dto.ProveedorDTO;
 import com.proyecto.proyecto.servicios.ProveedorServicio;
 
+
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/proveedores")
+@RequestMapping("/categorias")
 public class ProveedorControlador {
-    private final ProveedorServicio service;
-  
-    @Autowired
-    public ProveedorControlador(ProveedorServicio srv){
-        this.service =srv;
+    
+    final ProveedorServicio service;
+
+    public ProveedorControlador (ProveedorServicio srv){
+        this.service = srv;
     }
 
-    @PostMapping()
-    public ResponseEntity<ProveedorDTO> create(@Valid @RequestBody NewProveedorDTO proveedorDTO){
-        ProveedorDTO result = service.create(proveedorDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(result);        
+    /* ================ CREATE ================ */
+    @PostMapping("/{id}/proveedores")
+    public ResponseEntity<ProveedorDTO> create(@PathVariable("id") Long id, @Valid @RequestBody NewProveedorDTO proveedorDTO){
+        ProveedorDTO proveedorDTOs = service.create(id, proveedorDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(proveedorDTOs);        
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ProveedorDTO> retrive(@PathVariable("id") Long id){
-        ProveedorDTO result = service.retrieve(id);
+    /* ================ RETRIEVE ================ */
+    @GetMapping("/{idCategoria}/proveedores/{id}")
+    public ResponseEntity<ProveedorCategoriaDTO> retrive(@PathVariable("idCategoria") Long idCategoria, @PathVariable("id") Long id){
+        ProveedorCategoriaDTO result = service.retrieve(idCategoria, id);
         return ResponseEntity.ok().body(result);        
     }
 
-    @GetMapping() 
-    public ResponseEntity<List<ProveedorDTO>> list(){
-        List<ProveedorDTO> result  = service.list();
-        return ResponseEntity.ok().body(result);        
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<ProveedorDTO> update(@RequestBody ProveedorDTO proveedorDTO, @PathVariable("id") Long id){
-        ProveedorDTO result = service.update(proveedorDTO, id);
+    /* ================ UPDATE ================ */
+    @PutMapping("/{idCategoria}/proveedores/{id}")
+    public ResponseEntity<ProveedorCategoriaDTO> update(@RequestBody ProveedorDTO proveedorDTO, @PathVariable("idCategoria") Long idCategoria, @PathVariable("id") Long id){
+        ProveedorCategoriaDTO result = service.update(proveedorDTO, idCategoria, id);
         return ResponseEntity.ok().body(result);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> delete(@PathVariable("id") Long id){
-        service.delete(id);
-        return ResponseEntity.ok().body("Proveedor Eliminado");        
+    /* ================ DELETE ================ */
+    @DeleteMapping("/{idCategoria}/proveedores/{id}")
+    public ResponseEntity<Void> delete(@PathVariable("idCategoria") Long idCategoria, @PathVariable("id") Long id){
+        service.delete(idCategoria, id);
+        return ResponseEntity.noContent().build();
     }
+
+    /* ================ LIST ================ */
+    @GetMapping("/{id}/proveedores")
+    public ResponseEntity<List<ProveedorDTO>> list(@PathVariable("id") Long id){
+        List<ProveedorDTO> proveedores = service.list(id);
+        return ResponseEntity.ok().body(proveedores);        
+    }
+
 }

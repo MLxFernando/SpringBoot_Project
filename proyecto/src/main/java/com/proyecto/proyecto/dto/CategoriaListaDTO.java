@@ -1,6 +1,5 @@
 package com.proyecto.proyecto.dto;
 
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,9 +7,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class NewProveedorDTO {
+public class CategoriaListaDTO {
+    private Long id;
     private String nombre;
-    private Integer telefono;
-    private String direccion;
-    private String tipo;     
+    private String descripcion;    
+    private String tipo;  
 }

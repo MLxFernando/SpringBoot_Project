@@ -1,7 +1,5 @@
 package com.proyecto.proyecto.dto;
 
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,7 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-public class ProductoDTO extends NewProductoDTO {
-    private Long id;
+public class ProveedorCategoriaDTO extends ProveedorDTO{
+    private CategoriaDTO categoria;   
 }

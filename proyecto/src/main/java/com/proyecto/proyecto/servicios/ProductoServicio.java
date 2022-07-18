@@ -7,10 +7,7 @@ import com.proyecto.proyecto.dto.ProductoDTO;
 
 public interface ProductoServicio {
     
-    public ProductoDTO create(NewProductoDTO productoDTO);
-    public ProductoDTO retrieve(Long id);
-    public ProductoDTO update(ProductoDTO productoDTO, Long id);
-    public void delete(Long id);
-
-    public List<ProductoDTO> list();
+    public List<ProductoDTO> create(Long idCategoria, Long idProveedor,List<NewProductoDTO> list);
+    public List<ProductoDTO> list(Long idCategoria, Long idProveedor);
+    public void remove(Long idCategoria, Long idProveedor);
 }

@@ -4,12 +4,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.proyecto.proyecto.dto.CategoriaDTO;
+import com.proyecto.proyecto.dto.CategoriaListaDTO;
 import com.proyecto.proyecto.dto.NewCategoriaDTO;
+import com.proyecto.proyecto.excepciones.NoContentException;
 import com.proyecto.proyecto.excepciones.ResourceNotFoundException;
 import com.proyecto.proyecto.modelos.Categoria;
 import com.proyecto.proyecto.repositorios.CategoriaRepositorio;
@@ -21,8 +26,7 @@ public class CategoriaServicioImpl implements CategoriaServicio {
     final ModelMapper modelMapper;
     final CategoriaRepositorio categoriaRepositorio;
 
-    @Autowired
-    public CategoriaServicioImpl(@Autowired CategoriaRepositorio repository, ModelMapper mapper){
+    public CategoriaServicioImpl(CategoriaRepositorio repository, ModelMapper mapper){
         this.categoriaRepositorio = repository;
         this.modelMapper = mapper;
     }
@@ -49,11 +53,12 @@ public class CategoriaServicioImpl implements CategoriaServicio {
         Categoria categoria = categoriaRepositorio.findById(id)
                 .orElseThrow(()-> new ResourceNotFoundException("Categoria no encontrada"));
         
-        categoria.setId(id);
-        categoria = modelMapper.map(categoriaDTO, Categoria.class);
-        categoriaRepositorio.save(categoria);       
 
-        return modelMapper.map(categoria, CategoriaDTO.class);
+       Categoria categoriaUpdated = modelMapper.map(categoriaDTO, Categoria.class);
+        categoriaUpdated.setCreatedBy(categoria.getCreatedBy());
+        categoriaUpdated.setCreatedDate(categoria.getCreatedDate());
+        categoriaRepositorio.save(categoriaUpdated);   
+        return modelMapper.map(categoriaUpdated, CategoriaDTO.class);
     }
 
     @Override
@@ -66,10 +71,20 @@ public class CategoriaServicioImpl implements CategoriaServicio {
 
     @Override
     @Transactional(readOnly = true)
-    public List<CategoriaDTO> list() {
-        List<Categoria> categorias = categoriaRepositorio.findAll();
-        return categorias.stream().map(categoria -> modelMapper.map(categoria, CategoriaDTO.class))
-            .collect(Collectors.toList());        
+    public List<CategoriaListaDTO> list(int page, int size, String sort) {
+        Pageable pageable = sort == null || sort.isEmpty() ? 
+            PageRequest.of(page, size) 
+        :   PageRequest.of(page, size,  Sort.by(sort));
+
+        Page<Categoria> categorias = categoriaRepositorio.findAll(pageable);
+        if(categorias.isEmpty()) throw new NoContentException("La Categoria esta vacia");
+        return categorias.stream().map(categoria -> modelMapper.map(categoria, CategoriaListaDTO.class))
+        .collect(Collectors.toList());         
     }
-    
+
+    @Override
+    public long count() {
+        return categoriaRepositorio.count();
+    }
+
 }
