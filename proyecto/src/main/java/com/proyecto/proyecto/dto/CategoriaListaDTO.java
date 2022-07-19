@@ -11,5 +11,5 @@ public class CategoriaListaDTO {
     private Long id;
     private String nombre;
     private String descripcion;    
-    private String tipo;  
+    private String tipo; 
 }

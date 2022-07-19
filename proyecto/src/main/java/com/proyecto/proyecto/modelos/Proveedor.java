@@ -25,7 +25,7 @@ public class Proveedor {
     @Column(name = "NOMBRE",nullable = false, length = 100)
     private String nombre; 
     @Column(name = "TELEFONO")
-    private int telefono;
+    private Long telefono;
     @Column(name = "DIRECCION")
     private String direccion;
     @Column(name = "TIPO")

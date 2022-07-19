@@ -65,7 +65,13 @@ public class ProveedorControlador {
     @GetMapping("/{id}/proveedores")
     public ResponseEntity<List<ProveedorDTO>> list(@PathVariable("id") Long id){
         List<ProveedorDTO> proveedores = service.list(id);
-        return ResponseEntity.ok().body(proveedores);        
+        return ResponseEntity.ok().body(proveedores);
+    }    
+     /* ================ COUNT ================ */
+     @GetMapping("/proveedores/count")
+     public ResponseEntity<Long> count(){
+         long result = service.count();
+         return ResponseEntity.ok().body(result);        
     }
 
 }

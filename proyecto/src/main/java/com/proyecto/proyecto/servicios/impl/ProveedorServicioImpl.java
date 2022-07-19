@@ -85,6 +85,11 @@ public class ProveedorServicioImpl implements ProveedorServicio {
         
         return proveedores.stream().map(p -> modelMapper.map(p, ProveedorDTO.class) )
             .collect(Collectors.toList());
+    }    
+
+    @Override
+    public long count() {
+        return repositorio.count();
     }
 
 } 

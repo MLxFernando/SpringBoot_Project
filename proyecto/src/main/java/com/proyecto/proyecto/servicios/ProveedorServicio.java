@@ -12,6 +12,7 @@ public interface ProveedorServicio {
     public ProveedorCategoriaDTO retrieve(Long idCategoria,Long id);
     public ProveedorCategoriaDTO update(ProveedorDTO proveedorDTO, Long idCategoria,Long id);
     public void delete(Long idCategoria, Long id);
+    public long count();
 
     public List<ProveedorDTO> list(Long idCategoria);
 }

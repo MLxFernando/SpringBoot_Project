@@ -15,5 +15,5 @@ public interface CategoriaServicio {
     public void delete(Long id);
     public long count();
 
-    public List<CategoriaListaDTO> list(int page, int size, String sort);
+    public List<CategoriaListaDTO> list(int page, int size, String sort); 
 }

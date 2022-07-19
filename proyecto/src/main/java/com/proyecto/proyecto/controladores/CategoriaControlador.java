@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/categorias")
+
 public class CategoriaControlador {
     private final CategoriaServicio service;
   

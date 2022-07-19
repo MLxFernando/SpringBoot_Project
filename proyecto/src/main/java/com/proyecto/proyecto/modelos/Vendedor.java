@@ -33,7 +33,7 @@ public class Vendedor {
     private Cliente cliente;
 
     @ManyToOne
-    @JoinColumn(name="PROVEEDOR_ID", nullable=false)
-    private Proveedor proveedor;
+    @JoinColumn(name="PRODUCTO_ID", nullable=false)
+    private Producto producto;
 
 }
