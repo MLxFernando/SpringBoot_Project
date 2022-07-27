@@ -13,5 +13,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ProveedorDTO extends NewProveedorDTO {
     private Long id;
-    private List<ProductoDTO>bproductos;
+    private List<ProductoDTO>productos;
 }

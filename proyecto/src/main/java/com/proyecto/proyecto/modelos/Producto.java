@@ -26,12 +26,12 @@ public class Producto {
     private Long id;
     @Column(name = "NOMBRE",nullable = false, length = 100)
     private String nombre; 
-    @Column(name = "PRECIO")
+    @Column(name = "PRECIO", precision = 4, scale = 2)
     private double precio;
     @Column(name = "MARCA")
     private String marca;
     @Column(name = "CANTIDAD")
-    private int cantidad;
+    private short cantidad;
     @Column(name = "TIPO")
     private String tipo;
 

@@ -11,6 +11,6 @@ public class NewProductoDTO {
     private String nombre;
     private double precio; 
     private String marca;
-    private int cantidad;
+    private short cantidad;
     private String tipo;     
 }

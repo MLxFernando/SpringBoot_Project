@@ -32,7 +32,7 @@ public class ProductoControlador {
     }
 
     /* ================ CREATE ================ */
-    @PostMapping("/{id}/proveedores/{idProveedor}/productos")
+    @PostMapping("/{id}/proveedores/{idProveedor}/productos/create")
     public ResponseEntity<List<ProductoDTO>> create(@PathVariable("id") Long id, @PathVariable("idProveedor") Long idProveedor, @Valid @RequestBody List<NewProductoDTO> productosDTO){
         List<ProductoDTO> productoDTO = service.create(id, idProveedor, productosDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(productoDTO);        
@@ -46,7 +46,7 @@ public class ProductoControlador {
     }
 
     /* ================ LIST ================ */
-    @GetMapping("/{id}/proveedores/{idProveedor}/productos")
+    @GetMapping("/{id}/proveedores/{idProveedor}/productos/")
     public ResponseEntity<List<ProductoDTO>> list(@PathVariable("id") Long id, @PathVariable("idProveedor") Long idProveedor){
         List<ProductoDTO> productoDTO = service.list(id, idProveedor);
         return ResponseEntity.status(HttpStatus.OK).body(productoDTO);        

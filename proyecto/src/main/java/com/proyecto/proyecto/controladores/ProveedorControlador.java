@@ -34,7 +34,7 @@ public class ProveedorControlador {
     }
 
     /* ================ CREATE ================ */
-    @PostMapping("/{id}/proveedores")
+    @PostMapping("/{id}/proveedores/create")
     public ResponseEntity<ProveedorDTO> create(@PathVariable("id") Long id, @Valid @RequestBody NewProveedorDTO proveedorDTO){
         ProveedorDTO proveedorDTOs = service.create(id, proveedorDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(proveedorDTOs);        
