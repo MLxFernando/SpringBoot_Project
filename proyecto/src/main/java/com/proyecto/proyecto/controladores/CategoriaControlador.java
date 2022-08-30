@@ -11,6 +11,7 @@ import com.proyecto.proyecto.servicios.CategoriaServicio;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +35,7 @@ public class CategoriaControlador {
     }
     
     /* ================ CREATE ================ */
+    @Secured({"ROLE_VENDEDOR"})
     @PostMapping()
     public ResponseEntity<CategoriaDTO> create(@Valid @RequestBody NewCategoriaDTO categoriaDTO){
         CategoriaDTO result = service.create(categoriaDTO);
@@ -41,6 +43,7 @@ public class CategoriaControlador {
     }
 
     /* ================ RETRIEVE ================ */
+    @Secured({"ROLE_VENDEDOR", "ROLE_CLIENTE"})
     @GetMapping("/{id}")
     public ResponseEntity<CategoriaDTO> retrive(@PathVariable("id") Long id){
         CategoriaDTO result = service.retrieve(id);
@@ -48,6 +51,7 @@ public class CategoriaControlador {
     }
 
     /* ================ UPDATE ================ */
+    @Secured({"ROLE_VENDEDOR"})
     @PutMapping("/{id}")
     public ResponseEntity<CategoriaDTO> update(@RequestBody CategoriaDTO categoriaDTO, @PathVariable("id") Long id){
         CategoriaDTO result = service.update(categoriaDTO, id);
@@ -55,6 +59,7 @@ public class CategoriaControlador {
     }
 
     /* ================ DELETE ================ */
+    @Secured({"ROLE_VENDEDOR"})
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") Long id){
         service.delete(id);
@@ -62,6 +67,7 @@ public class CategoriaControlador {
     }
 
     /* ================ LIST ================ */
+    @Secured({"ROLE_VENDEDOR", "ROLE_CLIENTE"})
     @GetMapping("/{page}/{size}")
     public ResponseEntity<List<CategoriaListaDTO>> list(@PathVariable("page") int page, 
         @PathVariable("size") int size,
@@ -71,6 +77,7 @@ public class CategoriaControlador {
     }
 
      /* ================ COUNT ================ */
+     @Secured({"ROLE_VENDEDOR", "ROLE_CLIENTE"})
      @GetMapping("/count")
      public ResponseEntity<Long> count(){
          long result = service.count();
